@@ -24,7 +24,7 @@ export default function App() {
       <View style={styles.container}>
         <Header title={headerTitle} />
         {isCategorySelected ? (
-          <Products onHandleGoBack={onHandleNavigate} />
+          <Products onHandleGoBack={onHandleNavigate} categoryId={selectedCategory} />
         ) : (
           <Categories onSelectCategory={onHandleSelectCategory} />
         )}
