@@ -12,7 +12,14 @@ function Categories({ onSelectCategory }) {
           data={CATEGORIES}
           style={styles.categoryContainer}
           contentContainerStyle={styles.listCategory}
-          renderItem={({ item }) => <CategoryItem {...item} onSelectCategory={onSelectCategory} />}
+          renderItem={({ item }) => (
+            <CategoryItem
+              {...item}
+              onSelectCategory={() =>
+                onSelectCategory({ categoryId: item.id, color: item.backgroundColor })
+              }
+            />
+          )}
           keyExtractor={(item) => item.id}
           showsVerticalScrollIndicator={false}
         />
