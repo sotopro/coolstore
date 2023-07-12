@@ -15,4 +15,7 @@ export const styles = StyleSheet.create({
     gap: 15,
     paddingBottom: 20,
   },
+  categoryItemLandscape: {
+    height: 100,
+  },
 });
