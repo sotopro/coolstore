@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
-import { View, Text, TouchableOpacity, FlatList, ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 import { styles } from './styles';
 import { Input } from '../../components';
@@ -74,12 +75,15 @@ function Product({ navigation, route }) {
           <TouchableOpacity
             onPress={() => onSelectProduct({ productId: item.id })}
             style={styles.productContainer}>
-            <ImageBackground
-              source={{ uri: item.image }}
-              style={[styles.productImage, { backgroundColor: color }]}
-              resizeMethod="resize"
-              resizeMode="contain"
-            />
+            <Animated.View sharedTransitionTag={item.id}>
+              <Animated.Image
+                source={{ uri: item.image }}
+                style={[styles.productImage, { backgroundColor: color }]}
+                resizeMethod="resize"
+                resizeMode="contain"
+                sharedTransitionTag={`product-${item.id}`}
+              />
+            </Animated.View>
             <View style={styles.productDetail}>
               <Text style={styles.productName} numberOfLines={1} ellipsizeMode="tail">
                 {item.name}
