@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
-import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 
 import { styles } from './styles';
@@ -39,8 +40,8 @@ function Product({ navigation, route }) {
     setFilteredProducts([]);
   };
 
-  const onSelectProduct = ({ productId }) => {
-    navigation.navigate('ProductDetails', { productId });
+  const onSelectProduct = ({ productId, uri }) => {
+    navigation.navigate('ProductDetails', { productId, color, uri });
   };
 
   return (
@@ -73,26 +74,27 @@ function Product({ navigation, route }) {
         data={search.length > 0 ? filteredProducts : filteredProductsByCategory}
         renderItem={({ item }) => (
           <TouchableOpacity
-            onPress={() => onSelectProduct({ productId: item.id })}
+            key={item.id}
+            onPress={() => onSelectProduct({ productId: item.id, uri: item.image })}
             style={styles.productContainer}>
-            <Animated.View sharedTransitionTag={item.id}>
+            <Animated.View sharedTransitionTag={item.id.toString()}>
               <Animated.Image
                 source={{ uri: item.image }}
                 style={[styles.productImage, { backgroundColor: color }]}
                 resizeMethod="resize"
                 resizeMode="contain"
-                sharedTransitionTag={`product-${item.id}`}
+                sharedTransitionTag={`product-${item.id.toString()}`}
               />
+              <View style={styles.productDetail}>
+                <Text style={styles.productName} numberOfLines={1} ellipsizeMode="tail">
+                  {item.name}
+                </Text>
+                <Text style={styles.productPrice}>{`${item.currency.code} ${item.price}`}</Text>
+              </View>
             </Animated.View>
-            <View style={styles.productDetail}>
-              <Text style={styles.productName} numberOfLines={1} ellipsizeMode="tail">
-                {item.name}
-              </Text>
-              <Text style={styles.productPrice}>{`${item.currency.code} ${item.price}`}</Text>
-            </View>
           </TouchableOpacity>
         )}
-        contentContainerStyle={styles.productsContent}
+        columnWrapperStyle={styles.productsContent}
         keyExtractor={(item) => item.id.toString()}
         numColumns={2}
         showsVerticalScrollIndicator={false}

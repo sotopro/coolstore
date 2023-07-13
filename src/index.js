@@ -53,11 +53,7 @@ export default function App() {
   //     </View>
   //   </SafeAreaView>
   // );
-  return (
-    <GestureHandlerRootView style={styles.container}>
-      <RootNavigation />
-    </GestureHandlerRootView>
-  );
+  return <RootNavigation />;
 }
 
 const styles = StyleSheet.create({

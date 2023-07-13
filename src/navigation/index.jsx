@@ -1,12 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import ShopNavigation from './shop';
 
 const RootNavigation = () => {
   return (
-    <NavigationContainer>
-      <ShopNavigation />
-    </NavigationContainer>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <ShopNavigation />
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 };
 

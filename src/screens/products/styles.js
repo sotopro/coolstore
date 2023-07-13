@@ -1,6 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 import { COLORS } from '../../themes';
+
+const { width } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   container: {
@@ -24,6 +26,7 @@ export const styles = StyleSheet.create({
   },
   products: {
     flex: 1,
+    gap: 15,
   },
   notFound: {
     flex: 1,
@@ -36,14 +39,12 @@ export const styles = StyleSheet.create({
     right: 5,
   },
   productsContent: {
-    paddingVertical: 25,
+    paddingVertical: 20,
     gap: 15,
   },
   productContainer: {
     backgroundColor: COLORS.background,
     borderRadius: 10,
-    width: '45%',
-    marginHorizontal: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -52,6 +53,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 3,
+    width: width / 2 - 20,
   },
   productImage: {
     width: '100%',
