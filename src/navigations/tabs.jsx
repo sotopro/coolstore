@@ -32,9 +32,9 @@ const TabsNavigator = () => {
         component={ShopNavigator}
         options={{
           tabBarLabel: 'Shop',
-          tabBarIcon: ({ focused, color, size }) => (
-            <Ionicons name={focused ? 'home' : 'home-outline'} size={size} color={color} />
-          ),
+          tabBarIcon: ({ focused, color }) => {
+            return <Ionicons name={focused ? 'home' : 'home-outline'} size={20} color={color} />;
+          },
         }}
       />
       <BottomTab.Screen
@@ -42,8 +42,8 @@ const TabsNavigator = () => {
         component={CartNavigator}
         options={{
           tabBarLabel: 'Cart',
-          tabBarIcon: ({ focused, color, size }) => (
-            <Ionicons name={focused ? 'cart' : 'cart-outline'} size={size} color={color} />
+          tabBarIcon: ({ focused, color }) => (
+            <Ionicons name={focused ? 'cart' : 'cart-outline'} size={20} color={color} />
           ),
           tabBarBadge: 2,
           tabBarBadgeStyle: {
@@ -59,12 +59,8 @@ const TabsNavigator = () => {
         component={OrdersNavigator}
         options={{
           tabBarLabel: 'Orders',
-          tabBarIcon: ({ focused, color, size }) => (
-            <Ionicons
-              name={focused ? 'file-tray' : 'file-tray-outline'}
-              size={size}
-              color={color}
-            />
+          tabBarIcon: ({ focused, color }) => (
+            <Ionicons name={focused ? 'file-tray' : 'file-tray-outline'} size={20} color={color} />
           ),
         }}
       />
