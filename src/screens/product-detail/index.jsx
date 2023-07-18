@@ -8,7 +8,6 @@ function ProductDetail({ navigation, route }) {
 
   const product = PRODUCTS.find((product) => product.id === productId);
 
-  console.warn({ product });
   return (
     <View style={styles.container}>
       <View style={[styles.containerImage, { backgroundColor: color }]}>
