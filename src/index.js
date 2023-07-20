@@ -1,7 +1,9 @@
 import { useFonts } from 'expo-font';
 import { SafeAreaView, StyleSheet, View, ActivityIndicator } from 'react-native';
+import { Provider } from 'react-redux';
 
 import RootNavigator from './navigations';
+import { store } from './store';
 import { FONTS, COLORS } from './themes';
 
 // const categoryDefault = {
@@ -39,9 +41,11 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <RootNavigator />
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={styles.container}>
+        <RootNavigator />
+      </SafeAreaView>
+    </Provider>
   );
 }
 
