@@ -1,15 +1,17 @@
 import { View, Text } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
 import { CartItem } from '../../components';
-import CART from '../../constants/data/cart.json';
 
 const Cart = () => {
+  const cart = useSelector((state) => state.cart.items);
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={CART}
+        data={cart}
         renderItem={({ item }) => <CartItem {...item} />}
         keyExtractor={(item) => item.id.toString()}
         style={styles.listContainer}
