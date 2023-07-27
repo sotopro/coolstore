@@ -13,7 +13,6 @@ function ShopNavigator() {
       screenOptions={() => ({
         headerStyle: {
           backgroundColor: COLORS.primary,
-          height: 80,
         },
         headerTitleStyle: {
           fontFamily: FONTS.bold,

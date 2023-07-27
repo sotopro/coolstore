@@ -5,11 +5,13 @@ import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
 import { Input } from '../../components';
+import { useGetProductByCategoryQuery } from '../../store/products/api';
 import { COLORS } from '../../themes';
 
 function Product({ navigation, route }) {
   const { categoryId, color } = route.params;
   const products = useSelector((state) => state.products.data);
+  const { data, error, isLoading } = useGetProductByCategoryQuery(categoryId);
   const [search, setSearch] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [borderColor, setBorderColor] = useState(COLORS.primary);
@@ -20,9 +22,7 @@ function Product({ navigation, route }) {
   };
   const onHandleFocus = () => {};
 
-  const filteredProductsByCategory = products.filter(
-    (product) => product.categoryId === categoryId
-  );
+  const filteredProductsByCategory = data?.filter((product) => product.categoryId === categoryId);
 
   const filterBySearch = (query) => {
     let updatedProductList = [...filteredProductsByCategory];
