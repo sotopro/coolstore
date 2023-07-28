@@ -13,7 +13,7 @@ const OrderItem = ({ id, total, createAt, items }) => {
     <TouchableOpacity onPress={() => {}} style={styles.orderItemContainer}>
       <View style={styles.orderBody}>
         <Text style={styles.orderItemHeader}>Order</Text>
-        <Text style={styles.orderItemText}>{id}</Text>
+        <Text style={styles.orderItemText}># {id}</Text>
         <Text style={styles.orderItemHeader}>Items</Text>
         <Text style={styles.orderItemText}>{items.length}</Text>
       </View>
