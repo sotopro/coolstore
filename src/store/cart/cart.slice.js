@@ -47,10 +47,19 @@ const cartSlice = createSlice({
       state.items = state.items.filter((item) => item.id !== action.payload.id);
       state.total = sumTotal(state.items);
     },
+    clearCart: (state) => {
+      state.items = [];
+      state.total = 0;
+    },
   },
 });
 
-export const { addToCart, increaseItemQuantity, decreaseItemQuantity, removeItemFromCart } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  increaseItemQuantity,
+  decreaseItemQuantity,
+  removeItemFromCart,
+  clearCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
