@@ -7,6 +7,7 @@ import { styles } from './styles';
 import { addToCart } from '../../store/cart/cart.slice';
 import { useGetProductByIdQuery } from '../../store/products/api';
 import { COLORS } from '../../themes';
+import { formatCurrency } from '../../utils/functions';
 import { blurhash } from '../../utils/images';
 
 function ProductDetail({ navigation, route }) {
@@ -16,9 +17,9 @@ function ProductDetail({ navigation, route }) {
 
   const product = data?.find((product) => product.id === productId);
 
-  const onAddToCart = useCallback(() => {
+  const onAddToCart = () => {
     dispatch(addToCart(product));
-  }, [dispatch, product]);
+  };
 
   if (isLoading)
     return (
@@ -36,12 +37,15 @@ function ProductDetail({ navigation, route }) {
           placeholder={blurhash}
           contentFit="scale-down"
           transition={200}
+          allowDownscaling
+          recyclingKey={product.image}
+          cacheKey={product.image}
         />
       </View>
       <View style={styles.content}>
         <Text style={styles.name}>{product.name}</Text>
         <Text style={styles.description}>{product.description}</Text>
-        <Text style={styles.price}>USD {product.price}</Text>
+        <Text style={styles.price}>USD {formatCurrency(product.price)}</Text>
         <Text style={styles.tagTitle}>Tags</Text>
         <View style={styles.containerTags}>
           {product.tags.map((tag) => (

@@ -12,6 +12,7 @@ import {
   removeItemFromCart,
 } from '../../store/cart/cart.slice';
 import { useCreateOrderMutation } from '../../store/orders/api';
+import { formatCurrency } from '../../utils/functions';
 
 const Cart = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -98,7 +99,7 @@ const Cart = ({ navigation }) => {
           <Text style={styles.checkoutButtonText}>Checkout</Text>
           <View style={styles.totalContainer}>
             <Text style={styles.totalText}>Total:</Text>
-            <Text style={styles.totalPriceText}>USD {total}</Text>
+            <Text style={styles.totalPriceText}>USD {formatCurrency(total)}</Text>
           </View>
         </TouchableOpacity>
       </View>

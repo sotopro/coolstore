@@ -1,6 +1,7 @@
 import { TouchableOpacity, Text, View } from 'react-native';
 
 import { styles } from './styles';
+import { formatCurrency } from '../../../utils/functions';
 
 const formatDate = (time) => {
   const date = new Date(time);
@@ -20,7 +21,7 @@ const OrderItem = ({ id, total, createAt, items }) => {
         <Text style={styles.orderItemHeader}>Order placed</Text>
         <Text style={styles.orderItemText}>{formatDate(createAt)}</Text>
         <Text style={styles.orderItemHeader}>Total</Text>
-        <Text style={styles.orderItemText}>USD {total}</Text>
+        <Text style={styles.orderItemText}>USD {formatCurrency(total)}</Text>
       </View>
     </TouchableOpacity>
   );

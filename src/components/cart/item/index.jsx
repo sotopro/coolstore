@@ -25,13 +25,18 @@ const CartItem = ({
         <Image
           source={{ uri: image }}
           style={styles.image}
-          placeholder={blurhash}
+          // placeholder={blurhash}
           contentFit="scale-down"
           transition={200}
+          allowDownscaling
+          recyclingKey={image}
+          cacheKey={image}
         />
       </View>
       <View style={styles.detailContainer}>
-        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">
+          {name}
+        </Text>
         <Text style={styles.price}>{`${currency.code} ${price}`}</Text>
         <Text style={styles.qty}>{`qty: ${quantity} stock: ${stock}`}</Text>
         <View style={styles.actionContainer}>

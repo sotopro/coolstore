@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
   },
   imageContainer: {
-    maxWidth: 120,
+    width: 100,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: COLORS.primary,
@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
   },
   detailContainer: {
     justifyContent: 'space-between',
-    maxWidth: 190,
+    width: 170,
     gap: 5,
   },
   name: {

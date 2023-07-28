@@ -7,6 +7,7 @@ import { styles } from './styles';
 import { Input } from '../../components';
 import { useGetProductsByCategoryQuery } from '../../store/products/api';
 import { COLORS } from '../../themes';
+import { formatCurrency } from '../../utils/functions';
 import { blurhash } from '../../utils/images';
 
 function Product({ navigation, route }) {
@@ -85,12 +86,17 @@ function Product({ navigation, route }) {
               placeholder={blurhash}
               contentFit="scale-down"
               transition={200}
+              allowDownscaling
+              recyclingKey={item.image}
+              cacheKey={item.image}
             />
             <View style={styles.productDetail}>
               <Text style={styles.productName} numberOfLines={1} ellipsizeMode="tail">
                 {item.name}
               </Text>
-              <Text style={styles.productPrice}>{`${item.currency.code} ${item.price}`}</Text>
+              <Text style={styles.productPrice}>{`${item.currency.code} ${formatCurrency(
+                item.price
+              )}`}</Text>
             </View>
           </TouchableOpacity>
         )}
