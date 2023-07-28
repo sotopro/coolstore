@@ -23,7 +23,7 @@ function Categories({ navigation }) {
       </View>
     );
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.container}>
         <FlatList
           data={data}
@@ -46,7 +46,7 @@ function Categories({ navigation }) {
           showsVerticalScrollIndicator={false}
         />
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 

@@ -24,7 +24,9 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <RootNavigator />
+      <View style={styles.container}>
+        <RootNavigator />
+      </View>
     </Provider>
   );
 }

@@ -1,17 +1,23 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
-import { View, Text, TouchableOpacity, FlatList, ImageBackground } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  ImageBackground,
+  ActivityIndicator,
+} from 'react-native';
 import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
 import { Input } from '../../components';
-import { useGetProductByCategoryQuery } from '../../store/products/api';
+import { useGetProductsByCategoryQuery } from '../../store/products/api';
 import { COLORS } from '../../themes';
 
 function Product({ navigation, route }) {
   const { categoryId, color } = route.params;
-  const products = useSelector((state) => state.products.data);
-  const { data, error, isLoading } = useGetProductByCategoryQuery(categoryId);
+  const { data, error, isLoading } = useGetProductsByCategoryQuery(categoryId);
   const [search, setSearch] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [borderColor, setBorderColor] = useState(COLORS.primary);
@@ -42,6 +48,13 @@ function Product({ navigation, route }) {
   const onSelectProduct = ({ productId, name }) => {
     navigation.navigate('ProductDetail', { productId, color, name });
   };
+
+  if (isLoading)
+    return (
+      <View style={styles.containerLoader}>
+        <ActivityIndicator size="large" color={COLORS.primary} />
+      </View>
+    );
 
   return (
     <View style={styles.container}>
