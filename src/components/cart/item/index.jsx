@@ -1,8 +1,10 @@
 import { Ionicons } from '@expo/vector-icons';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { Image } from 'expo-image';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 import { styles } from './styles';
 import { COLORS } from '../../../themes';
+import { blurhash } from '../../../utils/images';
 
 const CartItem = ({
   id,
@@ -20,7 +22,13 @@ const CartItem = ({
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={{ uri: image }} style={styles.image} />
+        <Image
+          source={{ uri: image }}
+          style={styles.image}
+          placeholder={blurhash}
+          contentFit="scale-down"
+          transition={200}
+        />
       </View>
       <View style={styles.detailContainer}>
         <Text style={styles.name}>{name}</Text>

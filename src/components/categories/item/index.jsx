@@ -1,7 +1,9 @@
-import { TouchableHighlight, ImageBackground, Text, useWindowDimensions } from 'react-native';
+import { Image } from 'expo-image';
+import { TouchableHighlight, Text, useWindowDimensions } from 'react-native';
 
 import { styles } from './styles';
 import { COLORS } from '../../../themes';
+import { blurhash } from '../../../utils/images';
 
 const CategoryItem = ({ id, name, backgroundColor, backgroundImage, onSelectCategory, style }) => {
   // const { width } = useWindowDimensions();
@@ -14,12 +16,13 @@ const CategoryItem = ({ id, name, backgroundColor, backgroundImage, onSelectCate
       onPress={() => onSelectCategory(id)}
       style={[styles.container, { backgroundColor }]}
       underlayColor={COLORS.primary}>
-      <ImageBackground
+      <Image
         source={{ uri: backgroundImage }}
         style={[styles.imageBackground, style]}
-        resizeMode="cover">
+        contentFit="contain"
+        transition={200}>
         <Text style={styles.categoryName}>{name}</Text>
-      </ImageBackground>
+      </Image>
     </TouchableHighlight>
   );
 };

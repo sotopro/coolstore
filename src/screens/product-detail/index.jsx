@@ -1,10 +1,13 @@
-import { View, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Image } from 'expo-image';
+import { useCallback } from 'react';
+import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
 import { addToCart } from '../../store/cart/cart.slice';
 import { useGetProductByIdQuery } from '../../store/products/api';
 import { COLORS } from '../../themes';
+import { blurhash } from '../../utils/images';
 
 function ProductDetail({ navigation, route }) {
   const dispatch = useDispatch();
@@ -13,9 +16,9 @@ function ProductDetail({ navigation, route }) {
 
   const product = data?.find((product) => product.id === productId);
 
-  const onAddToCart = () => {
+  const onAddToCart = useCallback(() => {
     dispatch(addToCart(product));
-  };
+  }, [dispatch, product]);
 
   if (isLoading)
     return (
@@ -27,7 +30,13 @@ function ProductDetail({ navigation, route }) {
   return (
     <View style={styles.container}>
       <View style={[styles.containerImage, { backgroundColor: color }]}>
-        <Image source={{ uri: product.image }} style={styles.image} resizeMode="contain" />
+        <Image
+          source={{ uri: product.image }}
+          style={styles.image}
+          placeholder={blurhash}
+          contentFit="scale-down"
+          transition={200}
+        />
       </View>
       <View style={styles.content}>
         <Text style={styles.name}>{product.name}</Text>

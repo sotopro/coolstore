@@ -10,13 +10,17 @@ const formatDate = (time) => {
 const OrderItem = ({ id, total, createAt, items }) => {
   return (
     <TouchableOpacity onPress={() => {}} style={styles.orderItemContainer}>
-      <View style={styles.orderHeaderContainer}>
-        <Text style={styles.orderItemDate}>{formatDate(createAt)}</Text>
-      </View>
       <View style={styles.orderBody}>
-        <Text style={styles.orderItemId}>Id: {id}</Text>
-        <Text style={styles.orderItemTotal}>Total: USD {total}</Text>
-        <Text style={styles.orderItemId}>Total Items: {items.length}</Text>
+        <Text style={styles.orderItemHeader}>Order</Text>
+        <Text style={styles.orderItemText}>{id}</Text>
+        <Text style={styles.orderItemHeader}>Items</Text>
+        <Text style={styles.orderItemText}>{items.length}</Text>
+      </View>
+      <View style={styles.orderHeaderContainer}>
+        <Text style={styles.orderItemHeader}>Order placed</Text>
+        <Text style={styles.orderItemText}>{formatDate(createAt)}</Text>
+        <Text style={styles.orderItemHeader}>Total</Text>
+        <Text style={styles.orderItemText}>USD {total}</Text>
       </View>
     </TouchableOpacity>
   );

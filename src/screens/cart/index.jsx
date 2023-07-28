@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,17 +19,26 @@ const Cart = ({ navigation }) => {
   const total = useSelector((state) => state.cart.total);
 
   const [createOrder, { data, isError, error, isLoading }] = useCreateOrderMutation();
-  const onIncreaseCartItem = (id) => {
-    dispatch(increaseItemQuantity({ id }));
-  };
+  const onIncreaseCartItem = useCallback(
+    (id) => {
+      dispatch(increaseItemQuantity({ id }));
+    },
+    [dispatch]
+  );
 
-  const onDecreaseCartItem = (id) => {
-    dispatch(decreaseItemQuantity({ id }));
-  };
+  const onDecreaseCartItem = useCallback(
+    (id) => {
+      dispatch(decreaseItemQuantity({ id }));
+    },
+    [dispatch]
+  );
 
-  const onRemoveCartItem = (id) => {
-    dispatch(removeItemFromCart({ id }));
-  };
+  const onRemoveCartItem = useCallback(
+    (id) => {
+      dispatch(removeItemFromCart({ id }));
+    },
+    [dispatch]
+  );
 
   const onCreateOrder = async () => {
     const newOrder = {

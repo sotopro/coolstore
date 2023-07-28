@@ -5,19 +5,21 @@ import { COLORS, FONTS } from '../../themes';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: COLORS.background,
   },
   emptyCartContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: COLORS.background,
   },
   emptyCartText: {
-    fontFamily: FONTS.regular,
-    fontSize: 16,
+    fontFamily: FONTS.medium,
+    fontSize: 14,
   },
   listContainer: {
     flex: 1,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.background,
   },
   footerContainer: {
     backgroundColor: COLORS.background,

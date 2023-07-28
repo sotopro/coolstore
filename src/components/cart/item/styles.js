@@ -16,10 +16,9 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 3,
-    padding: 10,
     marginHorizontal: 15,
     marginTop: 15,
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-around',
     alignItems: 'center',
     borderRadius: 5,
   },
@@ -41,7 +40,7 @@ export const styles = StyleSheet.create({
   },
   name: {
     fontSize: 13,
-    fontFamily: FONTS.regular,
+    fontFamily: FONTS.medium,
   },
   price: {
     fontSize: 13,
@@ -49,11 +48,11 @@ export const styles = StyleSheet.create({
   },
   qty: {
     fontSize: 12,
-    fontFamily: FONTS.regular,
+    fontFamily: FONTS.light,
   },
   stock: {
     fontSize: 12,
-    fontFamily: FONTS.regular,
+    fontFamily: FONTS.light,
   },
   actionContainer: {
     gap: 20,
@@ -65,7 +64,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: COLORS.secodary,
-    borderRadius: 20,
+    borderRadius: 5,
   },
   increaseButtonText: {
     color: COLORS.white,
@@ -78,7 +77,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: COLORS.primary,
-    borderRadius: 20,
+    borderRadius: 5,
   },
   decreaseButtonText: {
     color: COLORS.white,
@@ -91,7 +90,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: COLORS.primary,
-    borderRadius: 20,
+    borderRadius: 5,
   },
   deleteContainer: {},
 });

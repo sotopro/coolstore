@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
   },
   addToCartButton: {
     width: '100%',
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.secodary,
     padding: 15,
     borderRadius: 5,
     justifyContent: 'center',

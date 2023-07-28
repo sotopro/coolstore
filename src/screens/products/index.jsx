@@ -1,19 +1,13 @@
 import { Ionicons } from '@expo/vector-icons';
+import { Image } from 'expo-image';
 import { useState } from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  ImageBackground,
-  ActivityIndicator,
-} from 'react-native';
-import { useSelector } from 'react-redux';
+import { View, Text, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
 
 import { styles } from './styles';
 import { Input } from '../../components';
 import { useGetProductsByCategoryQuery } from '../../store/products/api';
 import { COLORS } from '../../themes';
+import { blurhash } from '../../utils/images';
 
 function Product({ navigation, route }) {
   const { categoryId, color } = route.params;
@@ -74,6 +68,7 @@ function Product({ navigation, route }) {
             name="close-circle"
             size={20}
             color={COLORS.black}
+            suppressHighlighting
           />
         )}
       </View>
@@ -84,11 +79,12 @@ function Product({ navigation, route }) {
           <TouchableOpacity
             onPress={() => onSelectProduct({ productId: item.id, name: item.name })}
             style={styles.productContainer}>
-            <ImageBackground
+            <Image
               source={{ uri: item.image }}
               style={[styles.productImage, { backgroundColor: color }]}
-              resizeMethod="resize"
-              resizeMode="contain"
+              placeholder={blurhash}
+              contentFit="scale-down"
+              transition={200}
             />
             <View style={styles.productDetail}>
               <Text style={styles.productName} numberOfLines={1} ellipsizeMode="tail">
