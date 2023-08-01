@@ -1,15 +1,45 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useDispatch } from 'react-redux';
 
 import { styles } from './styles';
+import { useSignInMutation, useSignUpMutation } from '../../store/auth/api';
+import { setUser } from '../../store/auth/auth.slice';
 import { COLORS } from '../../themes';
 
 const Auth = () => {
+  const dispatch = useDispatch();
   const [isLogin, setIsLogin] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const headerTitle = isLogin ? 'Login' : 'Register';
   const buttonTitle = isLogin ? 'Login' : 'Register';
   const messageText = isLogin ? 'Need an account?' : 'Already have an account?';
+
+  const [signIn, { data }] = useSignInMutation();
+
+  const [signUp] = useSignUpMutation();
+
+  const onHandlerAuth = async () => {
+    try {
+      if (isLogin) {
+        await signIn({ email, password });
+      } else {
+        await signUp({ email, password });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // TODO: cambiar este useEffect por un selector custom
+  useEffect(() => {
+    if (data) {
+      dispatch(setUser(data));
+    }
+  }, [data]);
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -21,7 +51,8 @@ const Auth = () => {
           placeholderTextColor={COLORS.gray}
           autoCapitalize="none"
           autoCorrect={false}
-          onChangeText={() => {}}
+          onChangeText={(text) => setEmail(text)}
+          value={email}
         />
         <Text style={styles.label}>Password</Text>
         <TextInput
@@ -31,7 +62,8 @@ const Auth = () => {
           autoCapitalize="none"
           autoCorrect={false}
           secureTextEntry
-          onChangeText={() => {}}
+          onChangeText={(text) => setPassword(text)}
+          value={password}
         />
         <View style={styles.linkContainer}>
           <TouchableOpacity style={styles.link} onPress={() => setIsLogin(!isLogin)}>
@@ -39,7 +71,7 @@ const Auth = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={onHandlerAuth}>
             <Text style={styles.buttonText}>{buttonTitle}</Text>
           </TouchableOpacity>
         </View>
