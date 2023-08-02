@@ -24,7 +24,8 @@ const Auth = () => {
   const onHandlerAuth = async () => {
     try {
       if (isLogin) {
-        await signIn({ email, password });
+        const result = await signIn({ email, password });
+        if (result?.data) dispatch(setUser(result.data));
       } else {
         await signUp({ email, password });
       }
@@ -32,13 +33,6 @@ const Auth = () => {
       console.error(error);
     }
   };
-
-  // TODO: cambiar este useEffect por un selector custom
-  useEffect(() => {
-    if (data) {
-      dispatch(setUser(data));
-    }
-  }, [data]);
 
   return (
     <View style={styles.container}>
