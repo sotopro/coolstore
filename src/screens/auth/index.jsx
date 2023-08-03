@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, Text, TextInput } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 import { styles } from './styles';
