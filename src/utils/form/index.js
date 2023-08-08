@@ -1,6 +1,6 @@
 const formatEmail =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const minPasswordLength = 7;
+const securePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{6,})/;
 export const UPDATE_FORM = 'UPDATE_FORM';
 
 const validateInput = ({ name, value }) => {
@@ -24,9 +24,9 @@ const validateInput = ({ name, value }) => {
       if (formatValue === '') {
         hasError = true;
         error = `${name} is required`;
-      } else if (formatValue.length < minPasswordLength) {
+      } else if (!securePassword.test(formatValue)) {
         hasError = true;
-        error = `${name} must be at least ${minPasswordLength} characters`;
+        error = `${name} is not valid`;
       } else {
         hasError = false;
         error = '';
