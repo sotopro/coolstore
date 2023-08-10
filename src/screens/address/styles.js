@@ -35,4 +35,36 @@ export const styles = StyleSheet.create({
     fontFamily: FONTS.medium,
     color: COLORS.white,
   },
+  itemContainer: {
+    flexDirection: 'row',
+    padding: 20,
+    marginHorizontal: 20,
+    marginTop: 15,
+    backgroundColor: COLORS.white,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    borderRadius: 10,
+    elevation: 3,
+    gap: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  mapImageContainer: {
+    backgroundColor: COLORS.primary,
+  },
+  mapImage: {
+    width: 80,
+    height: 80,
+  },
+  itemDetailsContainer: {
+    flex: 1,
+    gap: 10,
+  },
+  itemAddress: {},
+  itemCoords: {},
 });
