@@ -20,18 +20,6 @@ const validateInput = ({ name, value }) => {
         error = '';
       }
       break;
-    case 'password':
-      if (formatValue === '') {
-        hasError = true;
-        error = `${name} is required`;
-      } else if (!securePassword.test(formatValue)) {
-        hasError = true;
-        error = `${name} is not valid`;
-      } else {
-        hasError = false;
-        error = '';
-      }
-      break;
     default:
       break;
   }
