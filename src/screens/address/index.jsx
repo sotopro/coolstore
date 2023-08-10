@@ -34,7 +34,7 @@ const Address = ({ navigation }) => {
           const { lat, lng } = JSON.parse(item.coords);
           return (
             <View style={styles.itemContainer}>
-              <View style={styles.itemMapImage}>
+              <View style={styles.mapImageContainer}>
                 <Image source={{ uri: item.image }} style={styles.mapImage} />
               </View>
               <View style={styles.itemDetailsContainer}>
