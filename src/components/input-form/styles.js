@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   },
   errorContainer: {
     flex: 1,
-    marginVertical: 5,
+    paddingVerticalVertical: 5,
   },
   error: {
     fontSize: 12,

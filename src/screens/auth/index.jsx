@@ -1,5 +1,5 @@
 import { useReducer, useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 import { styles } from './styles';
@@ -69,50 +69,52 @@ const Auth = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.header}>{headerTitle}</Text>
-        <InputForm
-          placeholder="email@domain.com"
-          placeholderTextColor={COLORS.gray}
-          autoCapitalize="none"
-          autoCorrect={false}
-          onChangeText={(text) => onHandlerInputChange({ value: text, name: 'email' })}
-          value={formState.email.value}
-          label="Email"
-          error={formState.email.error}
-          touched={formState.email.touched}
-          hasError={formState.email.hasError}
-        />
-        <InputForm
-          style={styles.input}
-          placeholder="*********"
-          placeholderTextColor={COLORS.gray}
-          autoCapitalize="none"
-          autoCorrect={false}
-          secureTextEntry
-          onChangeText={(text) => onHandlerInputChange({ value: text, name: 'password' })}
-          value={formState.password.value}
-          label="Password"
-          error={formState.password.error}
-          touched={formState.password.touched}
-          hasError={formState.password.hasError}
-        />
-        <View style={styles.linkContainer}>
-          <TouchableOpacity style={styles.link} onPress={() => setIsLogin(!isLogin)}>
-            <Text style={styles.linkText}>{messageText}</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            disabled={!formState.isFormValid}
-            style={!formState.isFormValid ? styles.buttonDisabled : styles.button}
-            onPress={onHandlerAuth}>
-            <Text style={styles.buttonText}>{buttonTitle}</Text>
-          </TouchableOpacity>
+    <KeyboardAvoidingView style={styles.containerKeyboardAvoidingView} behavior="height">
+      <View style={styles.container}>
+        <View style={styles.content}>
+          <Text style={styles.header}>{headerTitle}</Text>
+          <InputForm
+            placeholder="email@domain.com"
+            placeholderTextColor={COLORS.gray}
+            autoCapitalize="none"
+            autoCorrect={false}
+            onChangeText={(text) => onHandlerInputChange({ value: text, name: 'email' })}
+            value={formState.email.value}
+            label="Email"
+            error={formState.email.error}
+            touched={formState.email.touched}
+            hasError={formState.email.hasError}
+          />
+          <InputForm
+            style={styles.input}
+            placeholder="*********"
+            placeholderTextColor={COLORS.gray}
+            autoCapitalize="none"
+            autoCorrect={false}
+            secureTextEntry
+            onChangeText={(text) => onHandlerInputChange({ value: text, name: 'password' })}
+            value={formState.password.value}
+            label="Password"
+            error={formState.password.error}
+            touched={formState.password.touched}
+            hasError={formState.password.hasError}
+          />
+          <View style={styles.linkContainer}>
+            <TouchableOpacity style={styles.link} onPress={() => setIsLogin(!isLogin)}>
+              <Text style={styles.linkText}>{messageText}</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              disabled={!formState.isFormValid}
+              style={!formState.isFormValid ? styles.buttonDisabled : styles.button}
+              onPress={onHandlerAuth}>
+              <Text style={styles.buttonText}>{buttonTitle}</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

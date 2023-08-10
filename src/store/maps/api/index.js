@@ -22,4 +22,4 @@ export const mapsApi = createApi({
   }),
 });
 
-export const { useGetGeocodingQuery } = mapsApi;
+export const { useLazyGetGeocodingQuery } = mapsApi;
