@@ -51,11 +51,7 @@ const ImageSelector = ({ profileImage, onSelect }) => {
     <View style={styles.container}>
       <TouchableOpacity style={styles.content} onPress={onHandleTakePhoto}>
         {image || profileImage ? (
-          <Image
-            source={{ uri: image || profileImage }}
-            style={styles.image}
-            resizeMode="contain"
-          />
+          <Image source={{ uri: image || profileImage }} style={styles.image} resizeMode="cover" />
         ) : (
           <Ionicons name="ios-camera" size={24} color={COLORS.primary} />
         )}

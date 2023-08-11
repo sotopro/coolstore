@@ -5,7 +5,7 @@ import { COLORS, FONTS } from '../../themes';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    maxHeight: 300,
+    height: 'auto',
   },
   preview: {
     width: '100%',

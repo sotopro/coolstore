@@ -33,6 +33,16 @@ const CreateAddress = ({ navigation }) => {
     navigation.goBack();
   };
 
+  const onSelectMap = async () => {
+    navigation.navigate('Maps', { location });
+  };
+
+  useEffect(() => {
+    if (location) {
+      navigation.navigate('Maps', { location });
+    }
+  }, [location]);
+
   return (
     <View style={styles.container}>
       <LocationSelector onLocation={onLocation} />

@@ -9,6 +9,9 @@ export const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+  },
+  imageBackground: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -17,8 +20,8 @@ export const styles = StyleSheet.create({
     maxWidth: 400,
     padding: 15,
     margin: 15,
-    minHeight: 350,
-    backgroundColor: COLORS.white,
+    minHeight: 300,
+    backgroundColor: COLORS.background,
     borderWidth: 1,
     borderColor: COLORS.primary,
     shadowColor: '#000',
@@ -32,8 +35,8 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
   },
   header: {
-    fontFamily: FONTS.medium,
-    fontSize: 16,
+    fontFamily: FONTS.bold,
+    fontSize: 22,
     textAlign: 'center',
     color: COLORS.text,
     paddingVertical: 10,

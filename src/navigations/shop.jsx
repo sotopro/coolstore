@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Animated, StyleSheet, TouchableOpacity } from 'react-native';
+import { Animated, Platform, StyleSheet, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 import SettingsNavigator from './settings';
@@ -84,10 +84,14 @@ const styles = StyleSheet.create({
   goBack: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginRight: Platform.OS === 'android' ? 15 : 0,
   },
   goBackText: {
     fontSize: 14,
     color: COLORS.text,
+  },
+  icon: {
+    marginRight: Platform.OS === 'android' ? 15 : 0,
   },
 });
 
